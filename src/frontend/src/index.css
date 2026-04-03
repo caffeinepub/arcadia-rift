@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "BricolageGrotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GeneralSans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-weight: 200 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrainsMono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    /* Cyberpunk dark palette */
+    --background: 0.12 0.025 265;
+    --foreground: 0.93 0.02 265;
+    --card: 0.14 0.04 265;
+    --card-foreground: 0.93 0.02 265;
+    --popover: 0.16 0.04 265;
+    --popover-foreground: 0.93 0.02 265;
+    --primary: 0.82 0.16 210;
+    --primary-foreground: 0.1 0.03 265;
+    --secondary: 0.2 0.06 265;
+    --secondary-foreground: 0.93 0.02 265;
+    --muted: 0.18 0.04 265;
+    --muted-foreground: 0.6 0.05 265;
+    --accent: 0.7 0.22 295;
+    --accent-foreground: 0.08 0.02 265;
+    --destructive: 0.65 0.22 15;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.25 0.06 265;
+    --input: 0.22 0.05 265;
+    --ring: 0.72 0.18 210;
+    --chart-1: 0.82 0.16 210;
+    --chart-2: 0.7 0.22 295;
+    --chart-3: 0.75 0.2 260;
+    --chart-4: 0.82 0.18 80;
+    --chart-5: 0.6 0.15 160;
+    --sidebar: 0.12 0.025 265;
+    --sidebar-foreground: 0.93 0.02 265;
+    --sidebar-primary: 0.82 0.16 210;
+    --sidebar-primary-foreground: 0.1 0.03 265;
+    --sidebar-accent: 0.2 0.06 265;
+    --sidebar-accent-foreground: 0.93 0.02 265;
+    --sidebar-border: 0.25 0.06 265;
+    --sidebar-ring: 0.72 0.18 210;
+    /* neon custom props */
+    --neon-cyan: #27d6ff;
+    --neon-magenta: #d84cff;
+    --neon-gold: #e6c15a;
+    --neon-purple: #7a3cff;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "GeneralSans", system-ui, sans-serif;
+    background: linear-gradient(135deg, #070a16 0%, #0b0f22 50%, #0d1128 100%);
+    min-height: 100vh;
+  }
+}
+
+/* Neon glow utilities */
+.glow-cyan {
+  box-shadow: 0 0 10px #27d6ff, 0 0 20px rgba(39, 214, 255, 0.27);
+}
+
+.glow-magenta {
+  box-shadow: 0 0 10px #d84cff, 0 0 20px rgba(216, 76, 255, 0.27);
+}
+
+.glow-gold {
+  box-shadow: 0 0 10px #e6c15a, 0 0 20px rgba(230, 193, 90, 0.27);
+}
+
+.glow-purple {
+  box-shadow: 0 0 10px #7a3cff, 0 0 20px rgba(122, 60, 255, 0.27);
+}
+
+.text-neon-cyan {
+  color: #27d6ff;
+  text-shadow: 0 0 8px rgba(39, 214, 255, 0.7);
+}
+
+.text-neon-magenta {
+  color: #d84cff;
+  text-shadow: 0 0 8px rgba(216, 76, 255, 0.7);
+}
+
+.text-neon-gold {
+  color: #e6c15a;
+  text-shadow: 0 0 8px rgba(230, 193, 90, 0.7);
+}
+
+.logo-text {
+  font-family: "BricolageGrotesque", sans-serif;
+  font-weight: 800;
+  background: linear-gradient(90deg, #27d6ff 0%, #d84cff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 6px rgba(39, 214, 255, 0.5));
+}
+
+.nav-link {
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #a9afd6;
+  transition: color 0.2s;
+  padding-bottom: 2px;
+  position: relative;
+}
+
+.nav-link.active {
+  color: #27d6ff;
+  text-shadow: 0 0 8px rgba(39, 214, 255, 0.5);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #27d6ff;
+  box-shadow: 0 0 6px #27d6ff;
+  border-radius: 1px;
+}
+
+.nav-link:hover {
+  color: #e9ecff;
+}
+
+.game-card {
+  background: rgba(14, 19, 48, 0.9);
+  border: 1px solid rgba(42, 47, 90, 0.8);
+  border-radius: 12px;
+}
+
+.game-card:hover {
+  border-color: rgba(39, 214, 255, 0.2);
+}
+
+.hud-bar-bg {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.scanline-overlay {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 3px,
+    rgba(0, 0, 0, 0.03) 3px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(14, 19, 48, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(42, 47, 90, 0.8);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(39, 214, 255, 0.3);
+}
